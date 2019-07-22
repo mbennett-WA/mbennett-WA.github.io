@@ -1,44 +1,44 @@
-﻿Make,Fuel,AveHWY,AveCity
-Acura,Gasoline,31.5,23
-Alfa Romeo,Gasoline,28.5,20.5
-Aston Martin,Gasoline,19,12
-Audi,Gasoline,27.4,19.4
-BMW,Gasoline,27.5,22.33333333
-Bentley,Gasoline,21,12.5
-Buick,Gasoline,28,20.33333333
-Cadillac,Gasoline,25.83333333,18
-Chevrolet,Gasoline,26.6,19
-Chrysler,Gasoline,30,19.66666667
-Dodge,Gasoline,23.6,15.6
-Ferrari,Gasoline,19,14
-Fiat,Gasoline,32,24
-Ford,Gasoline,25.71428571,18.42857143
-GMC,Gasoline,23.66666667,17.33333333
-Genesis,Gasoline,24.66666667,16.33333333
-Honda,Gasoline,34.33333333,26
-Hyundai,Gasoline,29.5,22.5
-Infiniti,Gasoline,26.5,20.5
-Jaguar,Gasoline,26.33333333,18
-Jeep,Gasoline,24.66666667,18
-Kia,Gasoline,27,20
-Lamborghini,Gasoline,19,12
-Land Rover,Gasoline,23,17
-Lexus,Gasoline,28.8,23.6
-Lincoln,Gasoline,26.5,19.5
-Lotus,Gasoline,24,17
-MINI,Gasoline,33,24
-Maserati,Gasoline,22,15
-Mazda,Gasoline,34.5,26.5
-McLaren Automotive,Gasoline,23,16
-Mercedes-Benz,Gasoline,24.25,17.75
-Mitsubishi,Gasoline,33.33333333,26.33333333
-Nissan,Gasoline,27,20.4
-Porsche,Gasoline,24.66666667,18
-Ram,Gasoline,24.33333333,17.33333333
-Rolls-Royce,Gasoline,19,12
-Roush Performance,Gasoline,23,14
-Subaru,Gasoline,29.33333333,22
-Toyota,Gasoline,27,22
-Volkswagen,Gasoline,28.66666667,21
-Volvo,Gasoline,30.5,22.5
-smart,Gasoline,39,32
+﻿Make,Fuel,AveHWY,AveCity,Test
+Acura,Gasoline,31.5,23,1
+Alfa Romeo,Gasoline,28.5,20.5,1
+Aston Martin,Gasoline,19,12,1
+Audi,Gasoline,27.4,19.4,1
+BMW,Gasoline,27.5,22.33333333,1
+Bentley,Gasoline,21,12.5,1
+Buick,Gasoline,28,20.33333333,1
+Cadillac,Gasoline,25.83333333,18,1
+Chevrolet,Gasoline,26.6,19,1
+Chrysler,Gasoline,30,19.66666667,1
+Dodge,Gasoline,23.6,15.6,1
+Ferrari,Gasoline,19,14,1
+Fiat,Gasoline,32,24,1
+Ford,Gasoline,25.71428571,18.42857143,1
+GMC,Gasoline,23.66666667,17.33333333,1
+Genesis,Gasoline,24.66666667,16.33333333,1
+Honda,Gasoline,34.33333333,26,1
+Hyundai,Gasoline,29.5,22.5,1
+Infiniti,Gasoline,26.5,20.5,1
+Jaguar,Gasoline,26.33333333,18,1
+Jeep,Gasoline,24.66666667,18,1
+Kia,Gasoline,27,20,1
+Lamborghini,Gasoline,19,12,1
+Land Rover,Gasoline,23,17,1
+Lexus,Gasoline,28.8,23.6,1
+Lincoln,Gasoline,26.5,19.5,1
+Lotus,Gasoline,24,17,1
+MINI,Gasoline,33,24,1
+Maserati,Gasoline,22,15,1
+Mazda,Gasoline,34.5,26.5,1
+McLaren Automotive,Gasoline,23,16,1
+Mercedes-Benz,Gasoline,24.25,17.75,1
+Mitsubishi,Gasoline,33.33333333,26.33333333,1
+Nissan,Gasoline,27,20.4,1
+Porsche,Gasoline,24.66666667,18,1
+Ram,Gasoline,24.33333333,17.33333333,1
+Rolls-Royce,Gasoline,19,12,1
+Roush Performance,Gasoline,23,14,1
+Subaru,Gasoline,29.33333333,22,1
+Toyota,Gasoline,27,22,1
+Volkswagen,Gasoline,28.66666667,21,1
+Volvo,Gasoline,30.5,22.5,1
+smart,Gasoline,39,32,1
