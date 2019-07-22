@@ -1,44 +1,44 @@
-﻿Make,AveHWY,AveCity, ,Fuel
-Acura,31.5,23,1,Gasoline
-Alfa Romeo,28.5,20.5,1,Gasoline
-Aston Martin,19,12,1,Gasoline
-Audi,27.4,19.4,1,Gasoline
-BMW,27.5,22.33333333,1,Gasoline
-Bentley,21,12.5,1,Gasoline
-Buick,28,20.33333333,1,Gasoline
-Cadillac,25.83333333,18,1,Gasoline
-Chevrolet,26.6,19,1,Gasoline
-Chrysler,30,19.66666667,1,Gasoline
-Dodge,23.6,15.6,1,Gasoline
-Ferrari,19,14,1,Gasoline
-Fiat,32,24,1,Gasoline
-Ford,25.71428571,18.42857143,1,Gasoline
-GMC,23.66666667,17.33333333,1,Gasoline
-Genesis,24.66666667,16.33333333,1,Gasoline
-Honda,34.33333333,26,1,Gasoline
-Hyundai,29.5,22.5,1,Gasoline
-Infiniti,26.5,20.5,1,Gasoline
-Jaguar,26.33333333,18,1,Gasoline
-Jeep,24.66666667,18,1,Gasoline
-Kia,27,20,1,Gasoline
-Lamborghini,19,12,1,Gasoline
-Land Rover,23,17,1,Gasoline
-Lexus,28.8,23.6,1,Gasoline
-Lincoln,26.5,19.5,1,Gasoline
-Lotus,24,17,1,Gasoline
-MINI,33,24,1,Gasoline
-Maserati,22,15,1,Gasoline
-Mazda,34.5,26.5,1,Gasoline
-McLaren Automotive,23,16,1,Gasoline
-Mercedes-Benz,24.25,17.75,1,Gasoline
-Mitsubishi,33.33333333,26.33333333,1,Gasoline
-Nissan,27,20.4,1,Gasoline
-Porsche,24.66666667,18,1,Gasoline
-Ram,24.33333333,17.33333333,1,Gasoline
-Rolls-Royce,19,12,1,Gasoline
-Roush Performance,23,14,1,Gasoline
-Subaru,29.33333333,22,1,Gasoline
-Toyota,27,22,1,Gasoline
-Volkswagen,28.66666667,21,1,Gasoline
-Volvo,30.5,22.5,1,Gasoline
-smart,39,32,1,Gasoline
+﻿Make,AveCity,AveHWY,Tester,Fuel
+Acura,23,31.5,1,Gasoline
+Alfa Romeo,20.5,28.5,1,Gasoline
+Aston Martin,12,19,1,Gasoline
+Audi,19.4,27.4,1,Gasoline
+BMW,22.33333333,27.5,1,Gasoline
+Bentley,12.5,21,1,Gasoline
+Buick,20.33333333,28,1,Gasoline
+Cadillac,18,25.83333333,1,Gasoline
+Chevrolet,19,26.6,1,Gasoline
+Chrysler,19.66666667,30,1,Gasoline
+Dodge,15.6,23.6,1,Gasoline
+Ferrari,14,19,1,Gasoline
+Fiat,24,32,1,Gasoline
+Ford,18.42857143,25.71428571,1,Gasoline
+GMC,17.33333333,23.66666667,1,Gasoline
+Genesis,16.33333333,24.66666667,1,Gasoline
+Honda,26,34.33333333,1,Gasoline
+Hyundai,22.5,29.5,1,Gasoline
+Infiniti,20.5,26.5,1,Gasoline
+Jaguar,18,26.33333333,1,Gasoline
+Jeep,18,24.66666667,1,Gasoline
+Kia,20,27,1,Gasoline
+Lamborghini,12,19,1,Gasoline
+Land Rover,17,23,1,Gasoline
+Lexus,23.6,28.8,1,Gasoline
+Lincoln,19.5,26.5,1,Gasoline
+Lotus,17,24,1,Gasoline
+MINI,24,33,1,Gasoline
+Maserati,15,22,1,Gasoline
+Mazda,26.5,34.5,1,Gasoline
+McLaren Automotive,16,23,1,Gasoline
+Mercedes-Benz,17.75,24.25,1,Gasoline
+Mitsubishi,26.33333333,33.33333333,1,Gasoline
+Nissan,20.4,27,1,Gasoline
+Porsche,18,24.66666667,1,Gasoline
+Ram,17.33333333,24.33333333,1,Gasoline
+Rolls-Royce,12,19,1,Gasoline
+Roush Performance,14,23,1,Gasoline
+Subaru,22,29.33333333,1,Gasoline
+Toyota,22,27,1,Gasoline
+Volkswagen,21,28.66666667,1,Gasoline
+Volvo,22.5,30.5,1,Gasoline
+smart,32,39,1,Gasoline
