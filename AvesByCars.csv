@@ -1,4 +1,4 @@
-Make,AveHWY,AveCity
+﻿Make,AveHWY,AveCity
 Acura,31.50,23.00
 Alfa Romeo,28.50,20.50
 Aston Martin,19.00,12.00
@@ -11,16 +11,16 @@ Chevrolet,38.86,34.86
 Chrysler,30.00,19.67
 Dodge,23.60,15.60
 Ferrari,19.00,14.00
-Fiat,32.00,29.00
+Fiat,32.50,31.80
 Ford,34.50,30.88
 GMC,25.00,18.25
 Genesis,24.67,16.33
 Honda,34.33,26.00
-Hyundai,31.23,28.33
+Hyundai,33.00,31.00
 Infiniti,26.50,20.50
 Jaguar,29.50,21.00
 Jeep,24.67,18.00
-Kia,32.28,30.00
+Kia,31.00,29.00
 Lamborghini,19.00,12.00
 Land Rover,24.25,18.25
 Lexus,28.80,23.60
@@ -31,7 +31,7 @@ Maserati,22.00,15.00
 Mazda,34.50,26.50
 McLaren Automotive,23.00,16.00
 Mercedes-Benz,35.80,31.20
-Mitsubishi,50.50,50.00
+Mitsubishi,30.50,28.00
 Nissan,39.33,37.67
 Porsche,24.67,18.00
 Ram,24.33,17.33
@@ -41,4 +41,3 @@ Subaru,29.33,22.00
 Toyota,27.00,22.00
 Volkswagen,28.67,21.00
 Volvo,30.50,22.50
-smart,39.00,32.00
