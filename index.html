@@ -198,8 +198,8 @@ footer {
                   .attr("y", -150)    // y-offset from the xAxis, moves text UPWARD!
                   .style("text-anchor", "end")// right-justify text
                   .style("font-size","12px")
-                  .style("font-color","blue")
-                  .text("Select the 'Average MPG Details' button below to get additional details on Highway vs City MPG per Manufacturer.");
+                  .style('fill', 'dodgerblue')
+                  .text("Click on any of the plot dots to get additional details on Highway vs City MPG per Manufacturer.");
             
             
             
@@ -212,10 +212,11 @@ footer {
                   .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -10)    // y-offset from the xAxis, moves text UPWARD!
                   .style("text-anchor", "end")// right-justify text
-                  .style("font-size","16px")
-                  .style("font-color","blue")
+                  .style("font-size","14px")
+                  .style("fill","black")
                   .text("Average City MPG");
    
+            
 
               // Add y-axis to the canvas
               canvas.append("g")
@@ -266,7 +267,6 @@ footer {
                 .style("fill", function(d) { return colorScale(d.Make); })
                 .on("mouseover", tipMouseover)
                 .on("mouseout", tipMouseout)
-                //.on("click", "window.location.href = 'https://w3docs.com';");
                 .on("click",function(){window.location.href='https://mbennett-wa.github.io/Bar_AveHwy_AveCity.html'});
             
            
@@ -275,8 +275,8 @@ footer {
       <footer>
         <p>Visualization Navigation</p>
        <button onclick="window.location.href = 'https://mbennett-wa.github.io/Bar-Ave_by_Years_by_Manu.html';">Click Here for Next Chart</button>
-       <button onclick="window.location.href = 'https://mbennett-wa.github.io/Bar_AveHwy_AveCity.html';">Click Here for Average MPG Details</button>
    </p>
    </footer>
     </body>
 </html>
+
