@@ -201,6 +201,32 @@ footer {
                   .style('fill', 'dodgerblue')
                   .text("Click on any of the plot dots to get additional details on Highway vs City MPG per Manufacturer.");
             
+            canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .call(xAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("x", width +20) // x-offset from the xAxis, move label all the way to the right
+                  .attr("y", -420)    // y-offset from the xAxis, moves text UPWARD!
+                  .style("text-anchor", "end")// right-justify text
+                  .style("font-size","12px")
+                  .style('fill', 'red')
+                  .text("Nissan Wins for 2017!");
+            
+            canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .call(xAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -490) // x-offset from the xAxis, move label all the way to the right
+                  .attr("y", -110)    // y-offset from the xAxis, moves text UPWARD!
+                  .style("text-anchor", "end")// right-justify text
+                  .style("font-size","12px")
+                  .style('fill', 'purple')
+                  .text("Rolls-Royce Loses Big in 2017!");
+            
             
             
               canvas.append("g")
