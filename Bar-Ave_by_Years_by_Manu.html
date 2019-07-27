@@ -2,17 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Average Each Make Per Year</title>
+        <title>Average MPG By Make Per Year</title>
         <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <style>
-          
-          
-          
-          
-          
-          
-          
-          
           
           
         body {
@@ -33,16 +25,16 @@
             shape-rendering: crispEdges;
         }
           
-          div.tooltip {	
-            position: absolute;			
-            text-align: center;			
-            width: auto;					
-            height: auto;					
-            padding: 10px;				
-            font: 14px sans-serif;		
-            background: white;	
-            border: 0px;		
-            border-radius: 8px;			
+          div.tooltip { 
+            position: absolute;     
+            text-align: center;     
+            width: auto;          
+            height: auto;         
+            padding: 10px;        
+            font: 14px sans-serif;    
+            background: white;  
+            border: 0px;    
+            border-radius: 8px;     
             pointer-events: none;
             
             
@@ -214,8 +206,8 @@ footer {
               
               ///
               // Define the div for the tooltip
-                var div = d3.select("body").append("div")	
-                    .attr("class", "tooltip")				
+                var div = d3.select("body").append("div") 
+                    .attr("class", "tooltip")       
                     .style("opacity", 0);
               ///
                 // Create canvas
@@ -270,7 +262,7 @@ footer {
                   .attr("y", -305)    // y-offset from the xAxis, moves text UPWARD!
                   .style("text-anchor", "end")// right-justify text
                   .style("font-size","12px")
-                  .style("font-color","blue")
+                  .style('fill','dodgerblue')
                   .text("^--Select a Car Manufacturer from the Dropdown List");
 
                 canvas.append("g")
@@ -309,18 +301,18 @@ footer {
                         .attr("y", function(d,i) { return yScale(d); })
                         .attr("height", function(d,i) { return height - yScale(d); })
                     
-                        .on("mouseover", function(d,i) {		
-                            div.transition()		
-                            .duration(200)		
-                            .style("opacity", .9);		
-                            div.html("AVG Mpg: " + d)	
-                            .style("left", (d3.event.pageX) + "px")		
-                            .style("top", (d3.event.pageY - 28) + "px");	
-                         })					
-                        .on("mouseout", function(d) {		
-                            div.transition()		
-                .duration(300)		
-                .style("opacity", 0);	
+                        .on("mouseover", function(d,i) {    
+                            div.transition()    
+                            .duration(200)    
+                            .style("opacity", .9);    
+                            div.html("AVG Mpg: " + d) 
+                            .style("left", (d3.event.pageX) + "px")   
+                            .style("top", (d3.event.pageY - 28) + "px");  
+                         })         
+                        .on("mouseout", function(d) {   
+                            div.transition()    
+                .duration(300)    
+                .style("opacity", 0); 
             });
                   
                   
@@ -366,8 +358,7 @@ footer {
         </script>
             <footer>
         <p>Visualization Navigation</p>
-       <button onclick="window.location.href = 'https://w3docs.com';">Click Here for Previous Scene</button>
-       <button onclick="window.location.href = 'https://w3docs.com';">Click Here for Next Scene</button>
+       <button onclick='window.history.back()';>Click Here for Previous Scene</button>
 
    </p>
    </footer>
