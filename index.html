@@ -69,12 +69,10 @@ footer {
   }
 }        
           
-          
         body {
             font: 15px sans-serif;
         }
 
-          
         .axis path,
         .axis line {
             fill: none;
@@ -82,7 +80,6 @@ footer {
             shape-rendering: crispEdges;
         }
          
-
         .dot {
             stroke: none;
         }
@@ -104,8 +101,7 @@ footer {
 <p>The following Narrative Visualization aims to show the current state of Miles per Gallon data for Gasoline engines in the United States for the current year (2017 data). Additionally, specific details about the breakdown for City vs. Highway MPG and historical MPG is provided since 2010.  This Visualization is comprised of multiple graphs that allow the user to get Automobile MPG data in a variety of different scenes.</p>
 <p>In order to effectively use this Visualization, please note the buttons on the screen that will allow you to navigate easily from screen to screen.</p>
 
-
-      
+   
 <section>
 
   
@@ -116,14 +112,6 @@ footer {
 </section>
 
 
-      
-      
-      
-      
-           
-  
-      
-      
         <div id="vis-container"></div>
 
         <!-- Optionally reference your vis JS file here, or define in a script tag -->
@@ -138,7 +126,7 @@ footer {
                 makeVis(data);
             });
 
-          var makeVis = function(data) {
+              var makeVis = function(data) {
               // Common pattern for defining vis size and margins
               var margin = { top: 20, right: 20, bottom: 30, left: 40 },
                   width  = 760 - margin.left - margin.right,
@@ -174,12 +162,12 @@ footer {
                   .scale(yScale)
                   .orient('left');
 
-              // Add x-axis to the canvas
+              // Add annotation for Tool Tip
               canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
                   .call(xAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -255)    // y-offset from the xAxis, moves text UPWARD!
@@ -188,11 +176,12 @@ footer {
                   .style("font-color","blue")
                   .text("Average City vs Highway MPG.  Mouse over each point to get additional details.");
             
-            canvas.append("g")
+              // Add annotation for clicking on plot dot
+              canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
                   .call(xAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -150)    // y-offset from the xAxis, moves text UPWARD!
@@ -201,11 +190,12 @@ footer {
                   .style('fill', 'dodgerblue')
                   .text("Click on any of the plot dots to get additional details on Highway vs City MPG per Manufacturer.");
             
-            canvas.append("g")
+              // Add annotation for Nissan being the highest MPG
+              canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
                   .call(xAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("x", width +20) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -420)    // y-offset from the xAxis, moves text UPWARD!
@@ -214,11 +204,12 @@ footer {
                   .style('fill', 'red')
                   .text("Nissan Wins for 2017!");
             
-            canvas.append("g")
+              // Add annotation for Rolls-Royce being the lowest MPG
+              canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
                   .call(xAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("x", width -490) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -110)    // y-offset from the xAxis, moves text UPWARD!
@@ -228,12 +219,12 @@ footer {
                   .text("Rolls-Royce Loses Big in 2017!");
             
             
-            
+              // Add annotation for X Axis Value
               canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
                   .call(xAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
                   .attr("y", -10)    // y-offset from the xAxis, moves text UPWARD!
@@ -248,7 +239,7 @@ footer {
               canvas.append("g")
                   .attr("class", "y axis") // .orient('left') took care of axis positioning for us
                   .call(yAxis)
-                .append("text")
+                  .append("text")
                   .attr("class", "label")
                   .attr("transform", "rotate(-90)") // although axis is rotated, text is not
                   .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
@@ -300,7 +291,7 @@ footer {
         </script>
       <footer>
         <p>Visualization Navigation</p>
-       <button onclick="window.location.href = 'https://mbennett-wa.github.io/Bar-Ave_by_Years_by_Manu.html';">Click Here for Next Chart</button>
+       <button onclick="window.location.href = 'https://mbennett-wa.github.io/Bar-Ave_by_Years_by_Manu.html';">Click Here for Next Scene</button>
    </p>
    </footer>
     </body>
