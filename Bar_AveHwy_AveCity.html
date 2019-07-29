@@ -58,7 +58,7 @@ header {
   color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* Create HTML Text section */
 nav {
   float: left;
   width: 0%;
@@ -67,7 +67,6 @@ nav {
   padding: 20px;
 }
 
-/* Style the list inside the menu */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -80,14 +79,14 @@ article {
   background-color: #f1f1f1;
 }
 
-/* Clear floats after the columns */
+/* Clear empty spaces after the columns */
 section:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the footer */
+/* Footer Styling  */
 footer {
   background-color: #777;
   padding: 10px;
@@ -95,7 +94,7 @@ footer {
   color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Responsive layout code */
 @media (max-width: 600px) {
   nav, article {
     width: 100%;
@@ -155,7 +154,7 @@ footer {
  </section>   
         <div id='vis-container'></div>
         <script type="text/javascript">
-            // Load and munge data, then make the visualization.
+            // Load data, then make the visualization.
             var fileName = "https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AVG_Each_Make_GB_Fuel.csv";
             var carMPGFields = ["Tester","AVG Highway MPG","AVG City MPG"];
 
@@ -165,8 +164,6 @@ footer {
                     var make = d.Make;
                     makeMap[make] = [];
                   
-
-                    // { makeName: [ bar1Val, bar2Val, ... ] }
                     carMPGFields.forEach(function(field) {
                         makeMap[make].push( +d[field] );
                     
@@ -177,7 +174,7 @@ footer {
           
 
             var makeVis = function(makeMap) {
-                // Define dimensions of vis
+                // Define dimensions of the vis section
                 var margin = { top: 30, right: 50, bottom: 30, left: 50 },
                     width  = 850 - margin.left - margin.right,
                     height = 350 - margin.top  - margin.bottom;
@@ -188,18 +185,17 @@ footer {
                     .rangeRoundBands([-270, width], 0.1);
              
 
-                // Make y scale, the domain will be defined on bar update
+                // Make y scale
                 var yScale = d3.scale.linear()
                     .range([height, 0]);
 
-              
-              ///
-              // Define the div for the tooltip
+            
+              // Define the div area for the tooltip
                 var div = d3.select("body").append("div") 
                     .attr("class", "tooltip")       
                     .style("opacity", 0);
               ///
-                // Create canvas
+                // Create the canvas
                 var canvas = d3.select("#vis-container")
                   .append("svg")
                     .attr("width",  width  + margin.left + margin.right)
@@ -207,7 +203,7 @@ footer {
                     .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                // Make x-axis and add to canvas
+                // Make the x-axis and add to the canvas
                 var xAxis = d3.svg.axis()
                     .scale(xScale)
                     .orient("bottom");
@@ -215,13 +211,13 @@ footer {
                 //Add annotation for the mouse over
                 canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -295)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -295)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style("font-color","blue")
                   .text("Mouse over each point to get additional details on  Average MPG");
@@ -229,13 +225,13 @@ footer {
                 // Add x-axis to the canvas
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width +35) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", 15)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +35) 
+                  .attr("y", 15)   
+                  .style("text-anchor", "end")
                   .style("font-size","16px")
                   .style("font-color","blue")
                   .text("Year");
@@ -243,13 +239,13 @@ footer {
               //Add annotation for the drop down manufacturer selection
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width -390) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -305)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width -390) 
+                  .attr("y", -305)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style('fill',"dodgerblue")
                   .text("^--Select a Car Manufacturer from the Dropdown List");
@@ -260,7 +256,7 @@ footer {
                     .attr("transform", "translate(0," + height + ")")
                     .call(xAxis);
 
-                // Make y-axis and add to canvas
+                // Make the y-axis and add to the canvas
                 var yAxis = d3.svg.axis()
                     .scale(yScale)
                     .orient("left");
@@ -282,7 +278,7 @@ footer {
                     yAxisHandleForUpdate.call(yAxis);
 
                     var bars = canvas.selectAll(".bar").data(data);
-                    // Add bars for new data
+                    // Add the bars for the new data
                     bars.enter()
                       .append("rect")
                         .attr("class", "bar")
@@ -290,32 +286,30 @@ footer {
                         .attr("width", xScale.rangeBand())
                         .attr("y", function(d,i) { return yScale(d); })
                         .attr("height", function(d,i) { return height - yScale(d); })
-                    
-                        .on("mouseover", function(d,i) {    
-            div.transition()    
-                .duration(200)    
-                .style("opacity", .9);    
-            div.html("AVG Mpg: " + d) 
-                .style("left", (d3.event.pageX) + "px")   
-                .style("top", (d3.event.pageY - 28) + "px");  
+                        .on("mouseover", function(d,i) {   
+
+                    div.transition()    
+                       .duration(200)    
+                       .style("opacity", .9);
+
+                    div.html("AVG Mpg: " + d) 
+                       .style("left", (d3.event.pageX) + "px")   
+                       .style("top", (d3.event.pageY - 28) + "px");  
             })          
           .on("mouseout", function(d) {   
             div.transition()    
                 .duration(300)    
                 .style("opacity", 0); 
             });
-                  
-                  
 
-
-                    // Update old ones, already have x / width from before
+                    // Update old values
                     bars
                     
                         .transition().duration(750)
                         .attr("y", function(d,i) { return yScale(d); })
                         .attr("height", function(d,i) { return height - yScale(d); });
 
-                    // Remove old ones
+                    // Remove old values
                     bars.exit().remove();
                 };
 
@@ -327,7 +321,7 @@ footer {
                     updateBars(newData);
                 };
 
-                // Get names of makes, for dropdown
+                // Get names of makes for the dropdown
                 var makes = Object.keys(makeMap).sort();
 
                 var dropdown = d3.select("#vis-container")

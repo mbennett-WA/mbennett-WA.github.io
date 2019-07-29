@@ -37,8 +37,6 @@
             border-radius: 8px;     
             pointer-events: none;
             
-            
-
 }
           
   
@@ -59,7 +57,7 @@ header {
   color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* Create HTML text area */
 nav {
   float: left;
   width: 0%;
@@ -68,7 +66,6 @@ nav {
   padding: 20px;
 }
 
-/* Style the list inside the menu */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -81,14 +78,14 @@ article {
   background-color: #f1f1f1;
 }
 
-/* Clear floats after the columns */
+/* Clear spaces after the section */
 section:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the footer */
+/* footer styling  */
 footer {
   background-color: #777;
   padding: 10px;
@@ -96,14 +93,13 @@ footer {
   color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Responsive layout setup */
 @media (max-width: 600px) {
   nav, article {
     width: 100%;
     height: auto;
   }
 }        
-          
           
         body {
             font: 15px sans-serif;
@@ -177,7 +173,6 @@ footer {
                     makeMap[make] = [];
                   
 
-                    // { makeName: [ bar1Val, bar2Val, ... ] }
                     makeFields.forEach(function(field) {
                        makeMap[make].push( +d[field] );
                     
@@ -193,13 +188,13 @@ footer {
                     width  = 850 - margin.left - margin.right,
                     height = 350 - margin.top  - margin.bottom;
 
-                // Make x scale
+                // Make the x scale
                 var xScale = d3.scale.ordinal()
                     .domain(makeFields)     
                     .rangeRoundBands([-70, width], 0.1);
              
 
-                // Make y scale, the domain will be defined on bar update
+                // Make the y scale
                 var yScale = d3.scale.linear()
                     .range([height, 0]);
 
@@ -218,36 +213,36 @@ footer {
                     .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                // Make x-axis and add to canvas
+                // Make the x-axis and add to the canvas
                 var xAxis = d3.svg.axis()
                     .scale(xScale)
                     .orient("bottom");
               
               
-                // Add annotation for Mouse over
+                // Add the annotation for Mouse over
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -295)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -295)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style("font-color","blue")
                   .text("Mouse over each point to get additional details on  Average MPG");
             
-                // Add x-axis to the canvas
+                // Add the x-axis to the canvas
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width +35) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", 15)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +35) 
+                  .attr("y", 15)    
+                  .style("text-anchor", "end")
                   .style("font-size","16px")
                   .style("font-color","blue")
                   .text("Year");
@@ -255,13 +250,13 @@ footer {
               // Add annotation for selecting Car manufacturer from drop down
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                 .append("text")
                   .attr("class", "label")
-                  .attr("x", width -390) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -305)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width -390) 
+                  .attr("y", -305)   
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style('fill','dodgerblue')
                   .text("^--Select a Car Manufacturer from the Dropdown List");
@@ -293,7 +288,7 @@ footer {
                     yAxisHandleForUpdate.call(yAxis);
 
                     var bars = canvas.selectAll(".bar").data(data);
-                    // Add bars for new data
+                    // Then, Add bars for new data
                     bars.enter()
                       .append("rect")
                         .attr("class", "bar")
@@ -319,14 +314,14 @@ footer {
                   
 
 
-                    // Update old ones, already have x / width from before
+                    // Update the old values
                     bars
                     
                         .transition().duration(750)
                         .attr("y", function(d,i) { return yScale(d); })
                         .attr("height", function(d,i) { return height - yScale(d); });
 
-                    // Remove old ones
+                    // Remove old values
                     bars.exit().remove();
                 };
 
