@@ -15,7 +15,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Style the header */
+/* Header Style */
 header {
   background-color: #666;
   padding: 30px;
@@ -24,16 +24,16 @@ header {
   color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* Create the HTML Text section */
 nav {
   float: left;
   width: 0%;
-  height: 300px; /* only for demonstration, should be removed */
+  height: 300px; 
   background: #ccc;
   padding: 20px;
 }
 
-/* Style the list inside the menu */
+/* Style code */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -46,14 +46,14 @@ article {
   background-color: #f1f1f1;
 }
 
-/* Clear floats after the columns */
+/* Clean up areas after the column */
 section:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the footer */
+/* Footer Style */
 footer {
   background-color: #777;
   padding: 10px;
@@ -61,7 +61,7 @@ footer {
   color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Responsive layout Section */
 @media (max-width: 600px) {
   nav, article {
     width: 100%;
@@ -114,8 +114,6 @@ footer {
 
         <div id="vis-container"></div>
 
-        <!-- Optionally reference your vis JS file here, or define in a script tag -->
-        <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
         <script type="text/javascript">
 
             d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars.csv', function loadCallback(error, data) {
@@ -127,7 +125,7 @@ footer {
             });
 
               var makeVis = function(data) {
-              // Common pattern for defining vis size and margins
+              // Defining the vis size and margins
               var margin = { top: 20, right: 20, bottom: 30, left: 40 },
                   width  = 760 - margin.left - margin.right,
                   height = 500 - margin.top - margin.bottom;
@@ -139,7 +137,7 @@ footer {
                 .append("g")
                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              // Define our scales
+              // Define the scales
               var colorScale = d3.scale.category10();
 
               var xScale = d3.scale.linear()
@@ -150,9 +148,9 @@ footer {
               var yScale = d3.scale.linear()
                   .domain([ 10,
                             d3.max(data, function(d) { return d.AveHWY; }) + 1 ])
-                  .range([height, 0]); // flip order because y-axis origin is upper LEFT
+                  .range([height, 0]); 
 
-              // Define our axes
+              // Define the axes
               var xAxis = d3.svg.axis()
                   .scale(xScale)
                   .orient('bottom');
@@ -169,9 +167,9 @@ footer {
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -255)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -255)    // negative value moves text UPWARD!
+                  .style("text-anchor", "end") // right-justify text
                   .style("font-size","12px")
                   .style("font-color","blue")
                   .text("Average City vs Highway MPG.  Mouse over each point to get additional details.");
@@ -183,8 +181,8 @@ footer {
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -150)    // y-offset from the xAxis, moves text UPWARD!
+                  .attr("x", width +0) /
+                  .attr("y", -150)    
                   .style("text-anchor", "end")// right-justify text
                   .style("font-size","12px")
                   .style('fill', 'dodgerblue')
@@ -197,9 +195,9 @@ footer {
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +20) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -420)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +20) 
+                  .attr("y", -420)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style('fill', 'red')
                   .text("Nissan Wins for 2017!");
@@ -226,9 +224,9 @@ footer {
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -10)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -10)    
+                  .style("text-anchor", "end")
                   .style("font-size","14px")
                   .style("fill","black")
                   .text("Average City MPG");
@@ -237,12 +235,12 @@ footer {
 
               // Add y-axis to the canvas
               canvas.append("g")
-                  .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+                  .attr("class", "y axis") // y axis positioning 
                   .call(yAxis)
                   .append("text")
                   .attr("class", "label")
                   .attr("transform", "rotate(-90)") // although axis is rotated, text is not
-                  .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
+                  .attr("y", 15) // positive y is DOWN
                   .style("text-anchor", "end")
                   .text("Ave Highway MPG");
 
@@ -262,23 +260,23 @@ footer {
                       .style("left", (d3.event.pageX + 15) + "px")
                       .style("top", (d3.event.pageY - 28) + "px")
                       .transition()
-                      .duration(200) // ms
-                      .style("opacity", .9) // started as 0!
+                      .duration(200) // miliseconds
+                      .style("opacity", .9)
 
               };
               // tooltip mouseout event handler
               var tipMouseout = function(d) {
                   tooltip.transition()
-                      .duration(300) // ms
-                      .style("opacity", 0); // don't care about position!
+                      .duration(300) // miliseconds
+                      .style("opacity", 0); 
               };
 
-              // Add data points!
+              // Add the data points to the graph
               canvas.selectAll(".dot")
                 .data(data)
                 .enter().append("circle")
                 .attr("class", "dot")
-                .attr("r", 5.5) // radius size, could map to another data dimension
+                .attr("r", 5.5) // radius size
                 .attr("cx", function(d) { return xScale( d.AveCity ); })     // x position
                 .attr("cy", function(d) { return yScale( d.AveHWY ); })  // y position
                 .style("fill", function(d) { return colorScale(d.Make); })
