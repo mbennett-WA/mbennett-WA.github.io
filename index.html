@@ -16,7 +16,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Style the header */
+/* header styling */
 header {
   background-color: #666;
   padding: 30px;
@@ -25,16 +25,16 @@ header {
   color: white;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* HTML Text Area */
 nav {
   float: left;
   width: 0%;
-  height: 300px; /* only for demonstration, should be removed */
+  height: 300px; 
   background: #ccc;
   padding: 20px;
 }
 
-/* Style the list inside the menu */
+
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -47,14 +47,14 @@ article {
   background-color: #f1f1f1;
 }
 
-/* Clear floats after the columns */
+/* Clear spaces */
 section:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the footer */
+/* footer styling */
 footer {
   background-color: #777;
   padding: 10px;
@@ -62,7 +62,7 @@ footer {
   color: white;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Setup a Responsive layout */
 @media (max-width: 600px) {
   nav, article {
     width: 100%;
@@ -115,12 +115,10 @@ footer {
 
         <div id="vis-container"></div>
 
-        <!-- Optionally reference your vis JS file here, or define in a script tag -->
-        <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
         <script type="text/javascript">
 
             d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars.csv', function loadCallback(error, data) {
-                data.forEach(function(d) { // convert strings to numbers
+                data.forEach(function(d) { 
                     d.AveHWY = +d.AveHWY;
                     d.AveCity = +d.AveCity;
                 });
@@ -128,12 +126,12 @@ footer {
             });
 
               var makeVis = function(data) {
-              // Common pattern for defining vis size and margins
+             
               var margin = { top: 20, right: 20, bottom: 30, left: 40 },
                   width  = 760 - margin.left - margin.right,
                   height = 500 - margin.top - margin.bottom;
 
-              // Add the visualization svg canvas to the vis-container <div>
+              // Add svg canvas to the vis-container <div>
               var canvas = d3.select("#vis-container").append("svg")
                   .attr("width",  width  + margin.left + margin.right)
                   .attr("height", height + margin.top  + margin.bottom)
@@ -151,9 +149,9 @@ footer {
               var yScale = d3.scale.linear()
                   .domain([ 10,
                             d3.max(data, function(d) { return d.AveHWY; }) + 1 ])
-                  .range([height, 0]); // flip order because y-axis origin is upper LEFT
+                  .range([height, 0]); 
 
-              // Define our axes
+              // Define the axes to be used
               var xAxis = d3.svg.axis()
                   .scale(xScale)
                   .orient('bottom');
@@ -166,13 +164,13 @@ footer {
               // Add annotation for Tool Tip
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")")
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -255)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -255)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style("font-color","blue")
                   .text("Average City vs Highway MPG.  Mouse over each point to get additional details.");
@@ -180,13 +178,13 @@ footer {
               // Add annotation for clicking on plot dot
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -150)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -150)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style('fill', 'dodgerblue')
                   .text("Click on any of the plot dots to get additional details on Highway vs City MPG per Manufacturer.");
@@ -194,13 +192,13 @@ footer {
               // Add annotation for Nissan being the highest MPG
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +20) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -420)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +20) 
+                  .attr("y", -420)    
+                  .style("text-anchor", "end")/
                   .style("font-size","12px")
                   .style('fill', 'red')
                   .text("Nissan Wins for 2017!");
@@ -208,13 +206,13 @@ footer {
               // Add annotation for Rolls-Royce being the lowest MPG
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width -490) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -110)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width -490) 
+                  .attr("y", -110)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style('fill', 'purple')
                   .text("Rolls-Royce Loses Big in 2017!");
@@ -223,13 +221,13 @@ footer {
               // Add annotation for X Axis Value
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -10)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -10)    
+                  .style("text-anchor", "end")
                   .style("font-size","14px")
                   .style("fill","black")
                   .text("Average City MPG");
@@ -238,17 +236,17 @@ footer {
 
               // Add y-axis to the canvas
               canvas.append("g")
-                  .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+                  .attr("class", "y axis") 
                   .call(yAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("transform", "rotate(-90)") // although axis is rotated, text is not
-                  .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
+                  .attr("transform", "rotate(-90)") 
+                  .attr("y", 15)  
                   .style("text-anchor", "end")
                   .text("Ave Highway MPG");
 
               // Add the tooltip container to the vis container
-              // it's invisible and its position/contents are defined during mouseover
+              
               var tooltip = d3.select("#vis-container").append("div")
                   .attr("class", "tooltip")
                   .style("opacity", 0);
@@ -271,15 +269,15 @@ footer {
               var tipMouseout = function(d) {
                   tooltip.transition()
                       .duration(300) // ms
-                      .style("opacity", 0); // don't care about position!
+                      .style("opacity", 0); 
               };
 
-              // Add data points!
+              // Add the data points
               canvas.selectAll(".dot")
                 .data(data)
                 .enter().append("circle")
                 .attr("class", "dot")
-                .attr("r", 5.5) // radius size, could map to another data dimension
+                .attr("r", 5.5) // radius size
                 .attr("cx", function(d) { return xScale( d.AveCity ); })     // x position
                 .attr("cy", function(d) { return yScale( d.AveHWY ); })  // y position
                 .style("fill", function(d) { return colorScale(d.Make); })
