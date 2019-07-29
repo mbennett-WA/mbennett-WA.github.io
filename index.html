@@ -20,7 +20,7 @@ header {
   background-color: #666;
   padding: 15px;
   text-align: center;
-  font-size: 24px;
+  font-size: 30px;
   color: white;
 }
 
@@ -114,7 +114,7 @@ footer {
         <script type="text/javascript">
 
             d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars.csv', function loadCallback(error, data) {
-                data.forEach(function(d) { // convert strings to numbers
+                data.forEach(function(d) { 
                     d.AveHWY = +d.AveHWY;
                     d.AveCity = +d.AveCity;
                 });
@@ -122,19 +122,19 @@ footer {
             });
 
               var makeVis = function(data) {
-              // Common pattern for defining vis size and margins
+              
               var margin = { top: 20, right: 20, bottom: 30, left: 40 },
                   width  = 760 - margin.left - margin.right,
                   height = 500 - margin.top - margin.bottom;
 
-              // Add the visualization svg canvas to the vis-container <div>
+              // Add the visualization svg canvas 
               var canvas = d3.select("#vis-container").append("svg")
                   .attr("width",  width  + margin.left + margin.right)
                   .attr("height", height + margin.top  + margin.bottom)
                 .append("g")
                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              // Define our scales
+              // Define the scales
               var colorScale = d3.scale.category10();
 
               var xScale = d3.scale.linear()
@@ -160,13 +160,13 @@ footer {
               // Add annotation for Tool Tip
               canvas.append("g")
                   .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -255)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end")// right-justify text
+                  .attr("x", width +0) 
+                  .attr("y", -255)    
+                  .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style("font-color","blue")
                   .text("Average City vs Highway MPG.  Mouse over each point to get additional details.");
