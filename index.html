@@ -97,23 +97,30 @@ footer {
     </head>
     <body>
 <h2>Automobile Miles per Gallon for Gasoline Engine Vehicles Over Time</h2>
-<p>The following Narrative Visualization aims to show the current state of Miles per Gallon data for Gasoline engines in the United States for the current year (2017 data). Additionally, specific details about the breakdown for City vs. Highway MPG and historical MPG is provided since 2010.  This Visualization is comprised of multiple graphs that allow the user to get Automobile MPG data in a variety of different scenes.</p>
-<p>In order to effectively use this Visualization, please note the buttons on the screen that will allow you to navigate easily from screen to screen.</p>
+<p>The following Narrative Visualization aims to show the current state of Miles per Gallon data for Gasoline engines in the United States for the years 2015-2017.  This Visualization is comprised of multiple plots that allow the viewer to get Automobile MPG data in a variety of different scenes laid out as years.</p>
+<p>In order to effectively use this Visualization, please note the date buttons below that will allow you to navigate easily from screen to screen.</p>
 
    
 <section>
   <article>
-    <h1>Scatter Plot of Automobile MPG for 2017</h1>
-    <p>In the scatter plot below, the values for the Average Highway and Average City MPG are plotted for the current data year (2017).  Please note that this is for Gasoline Engine vehicles only, so manufacturers like Tesla are not represented.  For manufacturers that offer Gasoline, Electric, or Diesel engines, only the Gasoline MPG is included in the plot.</p>
-    <p>Using your mouse, hover over each of the data points on the plot to get more details about the Manufacturer, Average Highway MPG, and Average City MPG.  Please note that the value points are color coded to represent each manufacturer and for ease of viewing.  To get more details about a particular manufacturer's MPG values, please click on the plot dot for an additional drill-down scene.</p>
+    <h1>Scatter Plot of Automobile MPG for 2016.  Chevy Wins and Ferrari Loses!</h1>
+    <p>In the scatter plot below, the values for the Average Highway and Average City MPG are plotted for the current data year (Highlighted on the graph).  Please note that this is for Gasoline Engine vehicles only, so manufacturers like Tesla are not represented.  For manufacturers that offer Gasoline, Electric, or Diesel engines, only the Gasoline MPG is included in the plot.</p>
+    <p>Using your mouse, hover over each of the data points on the plot to get more details about the Manufacturer, Average Highway MPG, and Average City MPG.  Please note that the value points are color coded to represent each manufacturer and for ease of viewing.  
+           
+
+       </p>
+    <h1>Visualization Navigation:</h1>
+    <button onclick="window.location.href = 'https://mbennett-wa.github.io/index.html';">2015</button> <button onclick="window.location.href = 'https://mbennett-wa.github.io/scatter-plot_by_manu_2016.html';">2016</button> <button onclick="window.location.href = 'https://mbennett-wa.github.io/scatter-plot_by_manu_2017.html';">2017</button>
 </section>
 
+  
+  
 
         <div id="vis-container"></div>
 
         <script type="text/javascript">
 
-            d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars.csv', function loadCallback(error, data) {
+            d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars_2015.csv', function loadCallback(error, data) {
                 data.forEach(function(d) { 
                     d.AveHWY = +d.AveHWY;
                     d.AveCity = +d.AveCity;
@@ -165,27 +172,30 @@ footer {
                   .append("text")
                   .attr("class", "label")
                   .attr("x", width +0) 
-                  .attr("y", -255)    
+                  .attr("y", -250)    
                   .style("text-anchor", "end")
                   .style("font-size","12px")
                   .style("font-color","blue")
-                  .text("Average City vs Highway MPG.  Mouse over each point to get additional details.");
+                  .style("font-weight","bold")
+                  .text("Average City vs Highway MPG.  Mouse over ");
             
-              // Add annotation for clicking on plot dot
+               // Add annotation for Tool Tip
               canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width +0) 
-                  .attr("y", -150)    
+                  .attr("x", width -20) 
+                  .attr("y", -235)    
                   .style("text-anchor", "end")
                   .style("font-size","12px")
-                  .style('fill', 'dodgerblue')
-                  .text("Click on any of the plot dots to get additional details on Highway vs City MPG per Manufacturer.");
+                  .style("font-color","blue")
+                  .style("font-weight","bold")
+                  .text("each point to get additional details.");
             
-              // Add annotation for Nissan being the highest MPG
+                
+              // Add annotation for Chevy being the highest MPG
               canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") 
@@ -193,25 +203,42 @@ footer {
                   .append("text")
                   .attr("class", "label")
                   .attr("x", width +20) 
-                  .attr("y", -420)    
+                  .attr("y", -430)    
                   .style("text-anchor", "end")
                   .style("font-size","12px")
-                  .style('fill', 'red')
-                  .text("Nissan Wins for 2017!");
-            
-              // Add annotation for Rolls-Royce being the lowest MPG
+                  .style('fill', 'olive')
+          //   .style("opacity", .5)
+                  .text("Chevy Wins for 2015!");
+                
+                
+                // Add annotation for 2015 Title
               canvas.append("g")
                   .attr("class", "x axis")
                   .attr("transform", "translate(0," + height + ")") 
                   .call(xAxis)
                   .append("text")
                   .attr("class", "label")
-                  .attr("x", width -490) 
-                  .attr("y", -110)    
+                  .attr("x", width -100) 
+                  .attr("y", -450)    
+                  .style("text-anchor", "end")
+                  .style("font-size","24px")
+                  .style("font-style","italic")
+                  .style('fill', 'black')
+                  .text("2015 Combined Average MPG Data");
+            
+              // Add annotation for Ferrari being the lowest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -510) 
+                  .attr("y", -40)    
                   .style("text-anchor", "end")
                   .style("font-size","12px")
-                  .style('fill', 'purple')
-                  .text("Rolls-Royce Loses Big in 2017!");
+                  .style('fill', 'darkorange')
+                  .text("Ferrari Loses Big in 2015!");
             
             
               // Add annotation for X Axis Value
@@ -284,10 +311,10 @@ footer {
           };
         </script>
       <footer>
-       <button onclick="window.location.href = 'https://mbennett-wa.github.io/Bar-Ave_by_Years_by_Manu.html';">Click Here for Next Scene</button>
-       <p>Visualization Navigation</p>
+        <p>Reset the Interactive Slide Show</p><button onclick="window.location.href = 'https://mbennett-wa.github.io/index.html';">Reset</button>     
      </p>
    </footer>
     </body>
 </html>
+
 
