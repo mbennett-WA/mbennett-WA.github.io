@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Auto Gasoline MPG</title>
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <!-- Styles for our vis  -->
+        <style>
+         
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 15px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+
+/* Create HTML section */
+nav {
+  float: left;
+  width: 0%;
+  height: 300px; 
+  background: #ccc;
+  padding: 20px;
+}
+
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+/* Clear white space */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: left;
+  color: white;
+}
+
+/* Setup Responsive Layout */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}        
+          
+        body {
+            font: 15px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+         
+        .dot {
+            stroke: none;
+        }
+        .tooltip {
+            position: absolute;
+            font-size: 14px;
+            width:  auto;
+            height: auto;
+            pointer-events: none;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+        }
+         </style>
+    </head>
+    <body>
+<h2>Automobile Miles per Gallon for Gasoline Engine Vehicles Over Time</h2>
+<p>The following Narrative Visualization aims to show the current state of Miles per Gallon data for Gasoline engines in the United States for the years 2015-2017.  This Visualization is comprised of multiple plots that allow the viewer to get Automobile MPG data in a variety of different scenes laid out as years.</p>
+<p>In order to effectively use this Visualization, please note the date buttons below that will allow you to navigate easily from screen to screen.</p>
+
+   
+<section>
+  <article>
+    <h1>Scatter Plot of Automobile MPG for 2017.  Nissan Wins and Rolls-Royce Loses!</h1>
+    <p>In the scatter plot below, the values for the Average Highway and Average City MPG are plotted for the current data year (Highlighted on the graph).  Please note that this is for Gasoline Engine vehicles only, so manufacturers like Tesla are not represented.  For manufacturers that offer Gasoline, Electric, or Diesel engines, only the Gasoline MPG is included in the plot.</p>
+    <p>Using your mouse, hover over each of the data points on the plot to get more details about the Manufacturer, Average Highway MPG, and Average City MPG.  Please note that the value points are color coded to represent each manufacturer and for ease of viewing.  
+           
+
+       </p>
+    <h1>Visualization Navigation:</h1>
+    <button onclick="window.location.href = 'https://mbennett-wa.github.io/index.html';">2015</button> <button onclick="window.location.href = 'https://mbennett-wa.github.io/scatter-plot_by_manu_2016.html';">2016</button> <button onclick="window.location.href = 'https://mbennett-wa.github.io/scatter-plot_by_manu_2017.html';">2017</button>
+</section>
+
+  
+  
+
+        <div id="vis-container"></div>
+
+        <script type="text/javascript">
+
+            d3.csv('https://raw.githubusercontent.com/mbennett-WA/mbennett-WA.github.io/master/AvesByCars_2017.csv', function loadCallback(error, data) {
+                data.forEach(function(d) { 
+                    d.AveHWY = +d.AveHWY;
+                    d.AveCity = +d.AveCity;
+                });
+                makeVis(data);
+            });
+
+              var makeVis = function(data) {
+              
+              var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+                  width  = 760 - margin.left - margin.right,
+                  height = 500 - margin.top - margin.bottom;
+
+              // Add the visualization svg canvas 
+              var canvas = d3.select("#vis-container").append("svg")
+                  .attr("width",  width  + margin.left + margin.right)
+                  .attr("height", height + margin.top  + margin.bottom)
+                .append("g")
+                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+              // Define the scales
+              var colorScale = d3.scale.category10();
+
+              var xScale = d3.scale.linear()
+                  .domain([ 10,
+                            d3.max(data, function(d) { return d.AveCity; }) + 5 ])
+                  .range([0, width]);
+
+              var yScale = d3.scale.linear()
+                  .domain([ 10,
+                            d3.max(data, function(d) { return d.AveHWY; }) + 1 ])
+                  .range([height, 0]); // flip order because y-axis origin is upper LEFT
+
+              // Define our axes
+              var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient('bottom');
+
+            
+              var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient('left');
+
+              // Add annotation for Tool Tip
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width +0) 
+                  .attr("y", -250)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style("font-color","blue")
+                  .style("font-weight","bold")
+                  .text("Average City vs Highway MPG.  Mouse over ");
+            
+               // Add annotation for Tool Tip
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -20) 
+                  .attr("y", -235)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style("font-color","blue")
+                  .style("font-weight","bold")
+                  .text("each point to get additional details.");
+            
+                
+              // Add annotation for Chevy being the highest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -3) 
+                  .attr("y", -415)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'olive')
+                  .style("opacity", .3)
+                  .text("Chevy Wins for 2015!");
+                
+                // Add annotation for BMW being the highest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width +10) 
+                  .attr("y", -400)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'purple')
+                  .style("opacity", .3)
+                  .text("BMW Wins for 2016!");
+                
+                  // Add annotation for Nissan being the highest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width +20) 
+                  .attr("y", -431)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'red')
+                 // .style("opacity", .3)
+                  .text("Nissan Wins for 2017!");
+                
+                
+                // Add annotation for 2015 Title
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -100) 
+                  .attr("y", -450)    
+                  .style("text-anchor", "end")
+                  .style("font-size","24px")
+                  .style("font-style","italic")
+                  .style('fill', 'black')
+                  .text("2017 Combined Average MPG Data");
+            
+             // Add annotation for Rolls-Royce being the lowest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -490) 
+                  .attr("y", -115)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'brown')
+                  .text("Rolls-Royce Loses Big in 2017!");
+                
+                
+                // Add annotation for Ferrari being the lowest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -525) 
+                  .attr("y", -85)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'brown')
+                  .style("opacity", .3)
+                  .text("Bentley Loses Big in 2016!");
+                
+                // Add annotation for Ferrari being the lowest MPG
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -532) 
+                  .attr("y", -25)    
+                  .style("text-anchor", "end")
+                  .style("font-size","12px")
+                  .style('fill', 'darkorange')
+                  .style("opacity", .3)
+                  .text("Ferrari Loses Big in 2015!");
+            
+            
+              // Add annotation for X Axis Value
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width +0)
+                  .attr("y", -10)    
+                  .style("text-anchor", "end")
+                  .style("font-size","14px")
+                  .style("fill","black")
+                  .text("Average City MPG");
+   
+            
+
+              // Add y-axis to the canvas
+              canvas.append("g")
+                  .attr("class", "y axis") 
+                  .call(yAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("transform", "rotate(-90)") 
+                  .attr("y", 15) 
+                  .style("text-anchor", "end")
+                  .text("Ave Highway MPG");
+
+              // Add the tooltip container to the vis container
+              var tooltip = d3.select("#vis-container").append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0);
+
+              // tooltip mouseover event handler
+              var tipMouseover = function(d) {
+                  var color = colorScale(d.Make);
+                  var html  = "<span style='color:" + color + ";'>" + d.Make + "</span><br/>" +
+                              "<b>" + d.AveCity + "</b> City MPG, <b/>" + d.AveHWY + "</b> Highway MPG";
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX + 15) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px")
+                      .transition()
+                      .duration(200) // ms
+                      .style("opacity", .9) // started as 0!
+
+              };
+              // tooltip mouseout event handler
+              var tipMouseout = function(d) {
+                  tooltip.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); // don't care about position!
+              };
+
+              // Add the data points
+              canvas.selectAll(".dot")
+                .data(data)
+                .enter().append("circle")
+                .attr("class", "dot")
+                .attr("r", 5.5) // radius size, could map to another data dimension
+                .attr("cx", function(d) { return xScale( d.AveCity ); })     // x position
+                .attr("cy", function(d) { return yScale( d.AveHWY ); })  // y position
+                .style("fill", function(d) { return colorScale(d.Make); })
+                .on("mouseover", tipMouseover)
+                .on("mouseout", tipMouseout)
+                .on("click",function(){window.location.href='https://mbennett-wa.github.io/Bar_AveHwy_AveCity.html'});
+            
+           
+          };
+        </script>
+      <footer>
+        <p>Reset the Interactive Slide Show</p><button onclick="window.location.href = 'https://mbennett-wa.github.io/index.html';">Reset</button>     
+     </p>
+   </footer>
+    </body>
+</html>
+
+
