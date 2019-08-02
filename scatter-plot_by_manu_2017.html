@@ -254,7 +254,22 @@ footer {
                   .style("font-size","24px")
                   .style("font-style","italic")
                   .style('fill', 'black')
-                  .text("2017 Combined Average MPG Data");
+                  .text("Combined Average MPG Data");
+
+                        // Add annotation for 2015 Title
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") 
+                  .call(xAxis)
+                  .append("text")
+                  .attr("class", "label")
+                  .attr("x", width -240) 
+                  .attr("y", -420)    
+                  .style("text-anchor", "end")
+                  .style("font-size","24px")
+                  .style("font-style","italic")
+                  .style('fill', 'black')
+                  .text("2017");
             
              // Add annotation for Rolls-Royce being the lowest MPG
               canvas.append("g")
